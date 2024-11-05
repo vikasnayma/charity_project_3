@@ -5,12 +5,10 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const userRouter = require('./routes/userRoutes');
-const donationRouter = require('./routes/donationRoutes');
-const donorRouter = require('./routes/donorRoutes');
-const volunteerRouter = require('./routes/volunteerRoutes');
+const allRouter = require('./routes/allroutes');
 
 const cors = require('cors');
-const PORT = 8900;
+const PORT = 9000;
 
 
 app.use(express.json());
@@ -19,9 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use('/api' , userRouter);
-app.use('/api' , donationRouter);
-app.use('/api' , donorRouter);
-app.use('/api' , volunteerRouter);
+app.use('/api' , allRouter);
 
 //error handling
 app.use((err , req , res , next) => {

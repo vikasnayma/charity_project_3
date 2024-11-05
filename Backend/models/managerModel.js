@@ -15,6 +15,16 @@ const Manager = {
         return result.rows[0];
     },
 
+    //12
+    addDonor: async(donorData)=> {
+        const { d_id , d_name , d_city , d_phone , d_email , d_password  } = donorData;
+        const query = `INSERT INTO donor (d_id , d_name , d_city , d_phone , d_email , d_password)
+            VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+        const values = [ d_id , d_name , d_city , d_phone , d_email , d_password ];
+        const result = await pool.query(query , values);
+        return result.rows[0];
+    },
+
     //3
     getAllVolunteer: async() => {
         const query = `SELECT * FROM volunteer`;
@@ -27,6 +37,17 @@ const Manager = {
         const result = await pool.query(query , [v_id]);
         return result.rows[0];
     },
+
+    //13 
+    addVolunteer: async(volunteerData) => {
+        const { v_id , v_name , v_city , v_phone , v_email , v_password  } = volunteerData;
+        const query = `INSERT INTO volunteer (v_id , v_name , v_city , v_phone , v_email , v_password)
+            VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+        const values = [ v_id , v_name , v_city , v_phone , v_email , v_password ];
+        const result = await pool.query(query , values);
+        return result.rows[0];
+    },
+    
 
      //4 ADD DONATION
     addDonation: async(donationData) => {
@@ -110,5 +131,6 @@ const Manager = {
         const result = await pool.query(query ,project_id );
         return result.rows[0];
     }
-
 }
+
+module.exports = Manager;
