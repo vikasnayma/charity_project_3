@@ -20,8 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use('/api' , userRouter);
 app.use('/api' , donationRouter);
-app.use('./api' , donorRouter);
-app.use('./api' , volunteerRouter);
+app.use('/api' , donorRouter);
+app.use('/api' , volunteerRouter);
 
 //error handling
 app.use((err , req , res , next) => {
