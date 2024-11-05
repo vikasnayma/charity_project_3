@@ -3,11 +3,11 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Stats from '../components/Stats';
-import img1 from '../assets/about.avif';
-import img2 from '../assets/aboutImg.avif';
-
-import visionImage from '../assets/vision.avif'; // Path to your vision image
-import missionImage from '../assets/mission.avif'; // Path to your mission image
+import img1 from '../assets1/about.avif';
+import img2 from '../assets1/aboutImg.avif';
+import visionImage from '../assets1/vision.avif'; // Path to your vision image
+import missionImage from '../assets1/mission.avif'; // Path to your mission image
+import {motion} from 'framer-motion'
 
 export default function About() {
   return (
@@ -15,7 +15,11 @@ export default function About() {
       <Navbar />
 
       {/* who we are section */}
-      <div className="flex flex-col md:flex-row items-center m-12 p-6 border border-gray-300 rounded-lg">
+      <motion.div 
+      initial={{opacity:0, translateX:"-100%"}}
+      whileInView={{opacity:1, translateX: 0}}
+      transition={{duration:1.5}}
+      className="flex flex-col md:flex-row items-center m-12 p-6 border border-gray-300 rounded-lg">
   <div className="flex-1 flex flex-col gap-4 p-6">
   <p className="text-2xl text-black font-bold">- WHO WE ARE -</p>
 
@@ -28,13 +32,23 @@ export default function About() {
   <div className="flex-1">
     <img src={img2} alt="About us" className="h-[300px] w-full rounded-lg object-cover" />
   </div>
-</div>
+</motion.div>
 
 {/*  about us */}
 
 <h2 className="text-xl text-black font-semibold mt-8 mx-6 md:mx-12">About Us</h2>
 
-<div className="flex flex-col md:flex-row items-start justify-between mx-6 md:mx-12 mt-4">
+{/* single div for motion */}
+<motion.div
+initial={{opacity:0, translateX:"100%"}}
+whileInView={{opacity:1, translateX: 0}}
+transition={{duration:1.5}}
+>
+<div 
+      initial={{opacity:0, translateX:"100%"}}
+      whileInView={{opacity:1, translateX: 0}}
+      transition={{duration:1.5}}
+className="flex flex-col md:flex-row items-start justify-between mx-6 md:mx-12 mt-4">
   {/* First paragraph with image */}
   <div className="flex items-start md:w-1/2">
     <img src={img1} alt="Image description for paragraph 1" className="w-24 h-24 rounded-full object-cover mr-4" />
@@ -55,8 +69,6 @@ export default function About() {
     </p>
   </div>
 </div>
-
-
 <div className="mx-6 md:mx-12 mt-8">
       
 
@@ -75,7 +87,12 @@ export default function About() {
           </div>
         </div>
       </div>
-    </div>
+ </div>
+</motion.div>
+
+
+
+   
 
 
 

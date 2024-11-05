@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import logo from '../assets/logo.jpg';/
-import community from '../assets/community.jpg'
+import community from '../assets1/community.jpg'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer'
 import { motion } from 'framer-motion'
@@ -42,9 +42,12 @@ function Contact() {
     <div className="w-full mx-auto overflow-hidden">
     {/* Contact Form Image */}
     <div className="w-full mb-8 flex">
-      <img
+      <motion.img
         src={community}
         alt="Contact Us Banner"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
         className="w-full h-[500px] object-cover rounded-lg"
       />
     </div>

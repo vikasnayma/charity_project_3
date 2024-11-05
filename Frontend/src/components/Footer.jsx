@@ -7,9 +7,11 @@ const Footer = () => {
     <motion.footer 
     initial={{opacity:0, translateY:"100%"}}
     whileInView={{opacity:1, translateY:0}}
-    transition={{duration:0.7}}
-    className="bg-[#5f1515] text-white py-10">
-      <div className="px-4">
+    transition={{duration:1}}
+    className="bg-[#5f1515] text-white py-10 px-4">
+      <motion.div
+
+      className="px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Us Section */}
           <div>
@@ -63,7 +65,7 @@ const Footer = () => {
             &copy; 2024 Your Company LLC. <a href="/" className="hover:underline">Yuna Theme</a> by <a href="/" className="hover:underline">SSVR Design</a>.
           </p>
         </div>
-      </div>
+      </motion.div>
     </motion.footer>
   );
 };
