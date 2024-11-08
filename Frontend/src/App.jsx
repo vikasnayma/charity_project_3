@@ -8,7 +8,6 @@ import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login'
-import Blog from './Pages/Blog'
 import Volunteer from './Pages/Volunteer';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Projects" element={<Projects />} />
-        <Route path="/Blog" element={<Blog />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Login" element={<Login />} />

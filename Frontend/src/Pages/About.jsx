@@ -101,8 +101,14 @@ className="flex flex-col md:flex-row items-start justify-between mx-6 md:mx-12 m
       <div className="mt-24 m-12">
         <Stats />
       </div>
-
-      <Footer />
+      
+      <motion.div
+         initial={{opacity:0, translateY:"100%"}}
+         whileInView={{opacity:1, translateY:0}}
+         transition={{duration:1}}
+      >
+           <Footer />
+      </motion.div>
     </div>
   );
 }

@@ -38,43 +38,16 @@ const Navbar = () => {
               <button className=' text-blue-950 font-bold p-1 rounded'>
                 <NavLink to='/login'>Login</NavLink>
               </button>
-              <NavLink to='/Dashboard'>
-              <CgProfile className='hidden md:block ml-3 h-6 w-10'/>
-              </NavLink>
-              
             </div>
 
         </motion.div>    
       <div className="bg-[#910b0b] flex justify-evenly items-center p-4">
         <NavLink to='/'><div className="text-2xl font-bold">Yuna</div></NavLink>
         <div className="hidden md:flex space-x-6">
-          <div className="relative group">
-            <NavLink to='/'><button className="focus:outline-none">Home</button></NavLink>
-          </div>
-          <div className="relative group">
-            <NavLink to='/About'> <button className="focus:outline-none">About</button> </NavLink>
-            <div className="absolute left-0 hidden group-hover:block bg-white text-black rounded shadow-lg mt-2">
-              <a href="#" className="block px-4 py-2">Our Team</a>
-              <a href="#" className="block px-4 py-2">Our Mission</a>
-            </div>
-          </div>
-          <div className="relative group">
-            <NavLink to='/Projects'> <button className="focus:outline-none">Projects</button></NavLink>
-            <div className="absolute left-0 hidden group-hover:block bg-white text-black rounded shadow-lg mt-2">
-              <a href="#" className="block px-4 py-2">Children Education</a>
-              <a href="#" className="block px-4 py-2">Food Donation</a>
-              <a href="#" className="block px-4 py-2">Health Support</a>
-              <a href="#" className="block px-4 py-2">Animal Shelter</a>
-              <a href="#" className="block px-4 py-2">Cleanliness</a>
-              <a href="#" className="block px-4 py-2">Clothes Donation</a>
-            </div>
-          </div>
-          
-
-          <div className='relative group'>
-            <NavLink to='/contact'><button className='focus:outline-none'>Contact Us</button></NavLink>
-          </div>
-          
+            <NavLink to='/'><button className="hover:text-gray-400">Home</button></NavLink>
+            <NavLink to='/About'> <button className="hover:text-gray-400">About</button> </NavLink>
+            <NavLink to='/Projects'> <button className="hover:text-gray-400">Projects</button></NavLink>
+            <NavLink to='/contact'><button className='hover:text-gray-400'>Contact Us</button></NavLink>  
         </div>
         <Link to='/Projects'>
         <button className="bg-white text-red-600 px-4 py-2 rounded shadow-md">Donate</button>
@@ -96,7 +69,6 @@ const Navbar = () => {
               <div className="hover:bg-[#521515] py-2 px-4"><Link to='/About'>About</Link></div>
               <div className="hover:bg-[#521515] py-2 px-4"><Link to='/Projects'>Projects</Link></div>
               <div className="hover:bg-[#521515] py-2 px-4"><Link to='/Contact'>Contact Us</Link></div>
-              <div className="hover:bg-[#521515] py-2 px-4"><Link to='/Dashboard'>Dashboard</Link></div>
           </motion.div> 
         )
       }

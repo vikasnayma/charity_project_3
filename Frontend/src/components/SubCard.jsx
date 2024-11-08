@@ -7,25 +7,8 @@ import { faHeart as unfilledHeart } from "@fortawesome/free-regular-svg-icons";
 import { motion } from 'framer-motion'
 
 const SubCard = ({ title, donationOptions, addToWishlist }) => {
-  const [wishlistItems, setWishlistItems] = useState([]);
+  
 
-  const handleWishlistToggle = (option) => {
-    const updatedWishlist = [...wishlistItems];
-    const itemIndex = updatedWishlist.findIndex(item => item.title === option.title);
-
-    if (itemIndex !== -1) {
-      updatedWishlist.splice(itemIndex, 1); // Remove from wishlist
-    } else {
-      updatedWishlist.push(option); // Add to wishlist
-      addToWishlist(option);
-    }
-
-    setWishlistItems(updatedWishlist);
-  };
-
-  const isInWishlist = (option) => {
-    return wishlistItems.some(item => item.title === option.title);
-  };
 
   return (
     <motion.div 
@@ -42,15 +25,10 @@ const SubCard = ({ title, donationOptions, addToWishlist }) => {
             <p className="text-gray-500 mb-2 font-semibold">${option.price}</p>
             <p className="text-gray-600 mb-4">{option.description}</p>
             <div className="flex justify-between items-center mt-4">
-              <button className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
+              <button className="mx-auto bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
                 Donate
               </button>
-              <FontAwesomeIcon
-                icon={isInWishlist(option) ? filledHeart : unfilledHeart}
-                className={isInWishlist(option) ? "text-red-500" : "text-gray-400"}
-                onClick={() => handleWishlistToggle(option)}
-                style={{ cursor: "pointer", fontSize: "24px" }}
-              />
+              
             </div>
           </div>
         ))}

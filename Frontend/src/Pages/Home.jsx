@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Stats from '../components/Stats'
 import Card from '../components/Card'
+import {motion} from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
 

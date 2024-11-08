@@ -4,10 +4,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <motion.footer 
-    initial={{opacity:0, translateY:"100%"}}
-    whileInView={{opacity:1, translateY:0}}
-    transition={{duration:1}}
+    <footer 
     className="bg-[#5f1515] text-white py-10 px-4">
       <motion.div
 
@@ -66,7 +63,7 @@ const Footer = () => {
           </p>
         </div>
       </motion.div>
-    </motion.footer>
+    </footer>
   );
 };
 

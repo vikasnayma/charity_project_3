@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import community from '../assets1/community.jpg'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer'
+import { CiFacebook } from "react-icons/ci";
+import { CiInstagram } from "react-icons/ci";
+import { CiYoutube } from "react-icons/ci";
+import { IoLogoTwitter } from "react-icons/io";
 import { motion } from 'framer-motion'
 
 
@@ -113,43 +117,53 @@ function Contact() {
         </div>
       </motion.div>
 
-      {/* Contact Form Section */}
-      <motion.div
-      initial={{opacity:0, translateX:"100%"}}
-      whileInView={{opacity:1, translateX:0}}
-      transition={{duration:2}} 
-      className="bg-white shadow-lg rounded-lg p-4">
-        <h2 className="text-xl font-bold mb-4 text-[#910b0b]">Leave us a message</h2>
-        <form>
-          <div className="grid grid-cols-1 gap-4 mb-3">
-            <input
-              type="text"
-              placeholder="Your full name"
-              className="border border-gray-300 rounded-md p-2 w-full bg-gray-100 text-sm"
-            />
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="border border-gray-300 rounded-md p-2 w-full bg-gray-100 text-sm"
-            />
-            <input
-              type="text"
-              placeholder="Subject"
-              className="border border-gray-300 rounded-md p-2 w-full bg-gray-100 text-sm"
-            />
-            <textarea
-              placeholder="Message"
-              className="border border-gray-300 rounded-md p-2 w-full h-24 bg-gray-100 text-sm"
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-[#910b0b] hover:bg-[#7c2121] text-white rounded-md py-2 px-4 transition duration-200 text-sm"
-          >
-            Send message
-          </button>
-        </form>
-      </motion.div>
+      {/* Social Media Links Section */}
+     <motion.div
+  initial={{ opacity: 0, translateX: "100%" }}
+  whileInView={{ opacity: 1, translateX: 0 }}
+  transition={{ duration: 2 }}
+  className="bg-white shadow-lg rounded-lg p-4"
+>
+  <h2 className="text-center text-xl font-bold mb-12 text-[#910b0b] ">Connect with us</h2>
+  <motion.div 
+  initial={{ opacity: 0, rotateX: "90deg" }}
+  whileInView={{ opacity: 1, rotateX: 0 }}
+  transition={{ duration: 6 }}
+  className="flex flex-col justify-center items-center space-y-12 ">
+    <a
+      href="#"
+      target="_blank"
+      className="p-2 text-gray-600 hover:text-[#910b0b] flex items-center transition duration-200"
+    >
+      <a className='text-2xl'><CiFacebook /></a>
+      <i className="fab fa-facebook-f text-xl mr-3"></i> Facebook
+    </a>
+    <a
+      href="#"
+      target="_blank"
+      className="p-2 text-gray-600 hover:text-[#910b0b] flex items-center transition duration-200"
+    > <a className='text-2xl'><CiInstagram /></a>
+      <i className="fab fa-twitter text-xl mr-3"></i> Twitter
+    </a>
+    <a
+      href="#"
+      target="_blank"
+      className="p-2 text-gray-600 hover:text-[#910b0b] flex items-center transition duration-200"
+    > <a className='text-2xl'><CiYoutube /></a>
+      <i className="fab fa-instagram text-xl mr-3"></i> Instagram
+    </a>
+    <a
+      href="#"
+      target="_blank"
+      className="p-2 text-gray-600 hover:text-[#910b0b] flex items-center transition duration-200"
+    > <a className='text-2xl'><IoLogoTwitter /></a>
+      <i className="fab fa-youtube text-xl mr-3"></i> YouTube
+    </a>
+  </motion.div>
+     </motion.div>
+
+
+
     </div>
 
     {/* FAQ Section */}
@@ -183,8 +197,14 @@ function Contact() {
 
     
     </div>
-
-    <Footer />
+   
+    <motion.div
+      initial={{opacity:0, translateY:"100%"}}
+      whileInView={{opacity:1, translateY:0}}
+      transition={{duration:1}}
+    >
+       <Footer />
+    </motion.div>
 
     </div>
 
