@@ -19,5 +19,17 @@ router.post("/volunteer" , manager.addVolunteer);
 router.get('/volunteer' , manager.getAllVolunteer);
 router.get('/volunteer/:id' ,manager.getVolunteerById);
 
+//15
+router.get("/volunteerassignment/:id" , manager.getAllVolunteerWithinAProject);
+
+//16
+router.get("/totaldonation/:id" , manager.getTotalNoDonationForAProject);
+
+//17
+router.get("/fundinvestment/:id" , manager.getTotalFundInvestedByAManager);
+
+//18
+router.get("/donation/:id" , manager.updateDonationById);
+
 
 module.exports  = router;

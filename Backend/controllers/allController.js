@@ -93,3 +93,57 @@ exports.getVolunteerById = async(req ,res) => {
         return res.status(500).json({error: "Could not get volunteer with given id"});
     }
 }
+exports.getAllVolunteerWithinAProject = async(req , res) => {
+    try {
+        const allvolunteers = await Manager.getAssignVolunteersForAProject(req.params.id);
+        // console.log(allvolunteers);
+       if(!allvolunteers)
+            {
+                return res.status(404).json({msg: "Volunteer within given project id does not exist"});
+            } 
+            return res.status(200).json(allvolunteers);
+    } catch (error) {
+        return res.status(500).json({error: "Could not get volunteers within given project"});
+    }
+}
+
+exports.getTotalNoDonationForAProject = async(req , res) => {
+    try {
+        const totaldonations = await Manager.getTotalNoOfDonationForAProject(req.params.id);
+        // console.log(totaldonations);
+        
+        if(!totaldonations)
+            {
+                return res.status(404).json({msg: "no donations"});
+            } 
+        return res.status(200).json(totaldonations);
+    } catch (error) {
+        return res.status(500).json({error: "internal server error"});
+    }
+}
+
+exports.getTotalFundInvestedByAManager = async(req ,res) => {
+    try {
+        const totalinvestment = await Manager.getTotalFundInvestedByAManager(req.params.id);
+        if(!totalinvestment)
+            {
+                return res.status(404).json({msg: "no investments"});
+            } 
+        return res.status(200).json(totalinvestment);
+    } catch (error) {
+        return res.status(500).json({error: "internal server error"});
+    }
+}
+
+exports.updateDonationById = async (req , res) => {
+    try {
+        const updatedDonation = await Manager.updateDonationByID(req.params.id , req.body.new_amount);
+        if(!updatedDonation)
+            {
+                return res.status(404).json({msg: "couldnt find donation with given id"});
+            } 
+        return res.status(200).json(updatedDonation);
+    } catch (error) {
+        return res.status(500).json({error: "internal server error"});
+    }
+}

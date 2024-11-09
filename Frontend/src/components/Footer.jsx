@@ -1,10 +1,18 @@
 
 import { motion } from 'framer-motion'
 import React from 'react';
+import { CiFacebook } from "react-icons/ci";
+import { CiInstagram } from "react-icons/ci";
+import { CiYoutube } from "react-icons/ci";
+import { IoLogoTwitter } from "react-icons/io";
+
 
 const Footer = () => {
   return (
-    <footer 
+    <motion.footer 
+    initial={{opacity:0, translateY:"100%"}}
+    whileInView={{opacity:1, translateY:0}}
+    transition={{duration:1}}
     className="bg-[#5f1515] text-white py-10 px-4">
       <motion.div
 
@@ -16,7 +24,6 @@ const Footer = () => {
             <ul>
               <li><a href="/" className="hover:underline">Home</a></li>
               <li><a href="/About" className="hover:underline">About Us</a></li>
-              <li><a href="/Blog" className="hover:underline">Blog</a></li>
               <li><a href="/Projects" className="hover:underline">Projects</a></li>
               <li><a href="/Contact" className="hover:underline">Contact</a></li>
 
@@ -25,14 +32,31 @@ const Footer = () => {
 
           {/* Other Pages Section */}
           <div>
-            <h5 className="text-lg font-bold mb-4">Other Pages</h5>
-            <ul>
-              <li><a href="/privacy" className="hover:underline">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:underline">Terms of Use</a></li>
-              <li><a href="/disclaimer" className="hover:underline">Disclaimer</a></li>
-              <li><a href="/faq" className="hover:underline">FAQ</a></li>
-            </ul>
-          </div>
+  <p className="text-lg font-bold mb-4">Follow Us</p>
+  <ul>
+    <li className="flex items-center mb-4">
+      <CiFacebook className="mr-2" />
+      <a href="https://www.facebook.com" className="hover:underline">Facebook</a>
+    </li>
+    <li className="flex items-center mb-4">
+      <CiInstagram className="mr-2" />
+      <a href="https://www.instagram.com" className="hover:underline">Instagram</a>
+    </li>
+    <li className="flex items-center mb-4">
+      <CiYoutube className="mr-2" />
+      <a href="https://www.youtube.com" className="hover:underline">YouTube</a>
+    </li>
+    <li className="flex items-center mb-4">
+      <IoLogoTwitter className="mr-2" />
+      <a href="https://www.twitter.com" className="hover:underline">Twitter</a>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
 
           {/* Contact Info Section */}
           <div>
@@ -63,7 +87,7 @@ const Footer = () => {
           </p>
         </div>
       </motion.div>
-    </footer>
+    </motion.footer>
   );
 };
 

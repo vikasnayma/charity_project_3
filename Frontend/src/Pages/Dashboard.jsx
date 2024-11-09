@@ -160,10 +160,6 @@ function Dashboard() {
   // console.log(d_id);
 
 
-
-
-
-
   useEffect(() => {
     // No event parameter here
     const fetchData = async () => {
