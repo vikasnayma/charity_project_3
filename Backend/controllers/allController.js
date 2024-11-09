@@ -147,3 +147,32 @@ exports.updateDonationById = async (req , res) => {
         return res.status(500).json({error: "internal server error"});
     }
 }
+
+exports.addProject = async(req , res) => {
+    try {
+        const newProject = await Manager.addProject(req.body);
+        return res.status(201).json(newProject);
+    } catch (error) {
+        return res.status(500).json({error: "Could not add project"});
+    }
+ }
+ exports.getAllProject = async(req , res) => {
+    try {
+        const allProject = await Manager.getAllProject(req.body);
+        return res.status(200).json(allProject);
+    } catch (error) {
+        return res.status(500).json({error: "Could not get all projects"});
+    }
+ }
+
+ exports.getProjectById = async(req , res) => {
+    try {
+        const projectbyid  = await Manager.getProjectById(req.params.id);
+        if(!projectbyid){
+            return res.status(404).json({msg: "project unavailable with given id"});
+        }
+        return res.status(200).json(projectbyid);
+    } catch (error) {
+        return res.status(500).json({error: "Could not get project with given id"});
+    }
+ }

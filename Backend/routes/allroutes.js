@@ -9,6 +9,11 @@ router.post("/donation" , manager.makeDonation);
 router.get('/donation' , manager.getAllDonation);
 router.get('/donation/:id' , manager.getDonationById);
 
+//PROJECT ROUTES
+router.post("/project" , manager.addProject);
+router.get("/project" , manager.getAllProject);
+router.get("/project/:id" , manager.getProjectById);
+
 //DONOR ROUTES
 router.post("/donor" , manager.addDonor);
 router.get('/donor' , manager.getAllDonor);

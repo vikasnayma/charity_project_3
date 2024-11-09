@@ -98,10 +98,8 @@ const login = (req, res) => {
 
 //GETTING LOGGED IN USER
 const getUser = (req , res) => {
-
     const authToken = req.headers.authorization.split(' ')[1];
     const decode = jwt.verify(authToken , JWT_SECRET);
-
     const checkUserQuery = 'SELECT * FROM users WHERE id = $1';
     pool.query(checkUserQuery , [decode.id] , function(err , result , fields){
         if(err) throw err;

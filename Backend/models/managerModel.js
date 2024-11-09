@@ -172,7 +172,30 @@ const Manager = {
        WHERE donation_id = target_donation_id`;
        const result = await pool.query(query , [transaction_id , new_amount] );
        return result.rows;
-    }
+    },
+
+    getAllProject: async () => {
+        const query = `SELECT * FROM project`;
+        const result = await pool.query(query);
+        return result.rows;
+    },
+
+    //2
+    getProjectById: async (project_id) => {
+        const query = `SELECT * FROM project WHERE project_id = $1`;
+        const result = await pool.query(query, [project_id]);
+        return result.rows[0];
+    },
+
+    //12
+    addProject: async (projectData) => {
+        const { project_id, project_name , m_id } = projectData;
+        const query = `INSERT INTO donor ( project_id, project_name , m_id)
+            VALUES ($1, $2, $3) RETURNING *`;
+        const values = [ project_id, project_name , m_id];
+        const result = await pool.query(query, values);
+        return result.rows[0];
+    },
 }
 
 module.exports = Manager;
