@@ -31,10 +31,10 @@ export default function Login() {
       .then(res => {
         if(res.data.Status === "Success") {
            if(res.data.role == "Donor") {
-               navigate("/Donor/res.data.id")
+               navigate(`/Donor/${res.data.id}`)
            }
            else if( res.data.role == "Volunteer") {
-               navigate("/Volunteer/res.data.id")
+               navigate(`/Volunteer/${res.data.id}`)
            }
           //  navigate('/Home')
         }
