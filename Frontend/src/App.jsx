@@ -6,9 +6,9 @@ import Home from './Pages/Home'
 import Projects from './Pages/Projects'
 import About from './Pages/About'
 import Contact from './Pages/Contact'
-import Dashboard from './Pages/DonorProfile';
+import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login'
-import Volunteer from './Pages/VolunteerProfile';
+import Volunteer from './Pages/Volunteer';
 import Signup from './Pages/Signup';
 
 function App() {
