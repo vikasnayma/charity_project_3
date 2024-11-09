@@ -5,8 +5,10 @@ import Footer from '../components/Footer';
 import Stats from '../components/Stats';
 import img1 from '../assets1/about.avif';
 import img2 from '../assets1/aboutImg.avif';
-import visionImage from '../assets1/vision.avif'; // Path to your vision image
-import missionImage from '../assets1/mission.avif'; // Path to your mission image
+import about11 from '../assets1/about11.avif'; // Path to your vision image
+import about12 from '../assets1/about12.avif'; // Path to your mission image
+import about13 from '../assets1/about13.avif';
+import about14 from '../assets1/about14.avif';
 import {motion} from 'framer-motion'
 
 export default function About() {
@@ -70,24 +72,51 @@ className="flex flex-col md:flex-row items-start justify-between mx-6 md:mx-12 m
   </div>
 </div>
 <div className="mx-6 md:mx-12 mt-8">
-      
-
-      <div className="flex flex-col md:flex-row items-start justify-between mt-4">
-        <div className="md:w-1/2 ">
-          
-          <div className="mt-4">
-            <img src={visionImage} alt="Vision" className="w-full h-auto rounded-lg" />
-          </div>
-        </div>
-        
-        <div className="md:w-1/2 md:ml-4 mt-4 md:mt-0">
-          
-          <div className="mt-4">
-            <img src={missionImage} alt="Mission" className="w-full h-auto rounded-lg" />
-          </div>
-        </div>
+  <div className="flex flex-col md:flex-row items-start justify-between mt-4">
+    <div className="md:w-1/2 mb-4 md:mb-0">
+      <div className="mt-4">
+        <img
+          src={about11}
+          alt="Vision"
+          className="w-4/5 h-auto mx-auto rounded-lg" // Adjust width and preserve aspect ratio
+        />
       </div>
- </div>
+    </div>
+
+    <div className="md:w-1/2 md:ml-4 mt-4 md:mt-0">
+      <div className="mt-4">
+        <img
+          src={about12}
+          alt="Mission"
+          className="w-4/5 h-auto mx-auto rounded-lg" // Adjust width and preserve aspect ratio
+        />
+      </div>
+    </div>
+  </div>
+
+  <div className="flex flex-col md:flex-row items-start justify-between mt-4">
+    <div className="md:w-1/2 mb-4 md:mb-0">
+      <div className="mt-4">
+        <img
+          src={about13}
+          alt="Vision"
+          className="w-4/5 h-auto mx-auto rounded-lg" // Adjust width and preserve aspect ratio
+        />
+      </div>
+    </div>
+
+    <div className="md:w-1/2 md:ml-4 mt-4 md:mt-0">
+      <div className="mt-4">
+        <img
+          src={about14}
+          alt="Mission"
+          className="w-4/5 h-auto mx-auto rounded-lg" // Adjust width and preserve aspect ratio
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
 </motion.div>
 
 
@@ -101,14 +130,8 @@ className="flex flex-col md:flex-row items-start justify-between mx-6 md:mx-12 m
       <div className="mt-24 m-12">
         <Stats />
       </div>
-      
-      <motion.div
-         initial={{opacity:0, translateY:"100%"}}
-         whileInView={{opacity:1, translateY:0}}
-         transition={{duration:1}}
-      >
-           <Footer />
-      </motion.div>
+
+      <Footer />
     </div>
   );
 }
