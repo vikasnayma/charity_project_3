@@ -7,9 +7,9 @@ import Projects from './Pages/Projects'
 import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Dashboard from './Pages/Dashboard';
-import Login from './Pages/Login'
+import Login from './components/login'
 import Volunteer from './Pages/Volunteer';
-import Signup from './Pages/Signup';
+import  Signup from './components/Signup';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Donor" element={<Dashboard />} />
         <Route path="/Volunteer" element={<Volunteer/>} />
-        <Route path="/Signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup />} />
         </Routes>
 
        
