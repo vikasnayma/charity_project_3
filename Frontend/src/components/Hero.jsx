@@ -10,7 +10,7 @@ const Hero = () => {
 <div className="bg-beige text-black max-w-7xl mx-auto min-h-[90vh] flex flex-col md:flex-row justify-center items-center py-4 md:py-6">
   {/* left section */}
   <motion.div
-    initial={{ opacity: 0, translateX: "-100%" }}
+    initial={{ opacity: 0, translateX: "-50%" }}
     whileInView={{ opacity: 1, translateX: 0 }}
     transition={{ duration: 1 }}
     className="max-w-3xl text-center md:text-left space-y-3"

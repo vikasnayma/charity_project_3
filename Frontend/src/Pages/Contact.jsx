@@ -46,21 +46,18 @@ function Contact() {
     <div className="w-full mx-auto overflow-hidden">
     {/* Contact Form Image */}
     <div className="w-full mb-8 flex">
-      <motion.img
+      <img
         src={community}
         alt="Contact Us Banner"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
         className="w-full h-[500px] object-cover rounded-lg"
       />
     </div>
 
     {/* Title */}
     <motion.div
-     initial={{opacity:0, rotateX:"90deg"}}
+     initial={{opacity:0, rotateX:"10deg"}}
      whileInView={{opacity:1, rotateX:0}}
-     transition={{duration:2}}     
+     transition={{duration:0}}     
     className="text-center mb-8">
       <h2 className="text-lg font-medium">Contact with us</h2>
       <p className="text-xl text-[#910b0b] font-bold">Get in touch with us & stay updated</p>
@@ -70,9 +67,9 @@ function Contact() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Contact Info Section */}
       <motion.div
-     initial={{opacity:0, translateX:"-100%"}}
+     initial={{opacity:0, translateX:"-10%"}}
      whileInView={{opacity:1, translateX:0}}
-     transition={{duration:2}} 
+     transition={{duration:1}} 
       className="space-y-4">
         {/* Address */}
         <div className="flex items-center justify-center space-x-3 p-4 bg-white shadow-md rounded-lg hover:scale-105 transition-transform duration-200 hover:shadow-lg min-h-[130px] text-center">
@@ -119,16 +116,13 @@ function Contact() {
 
       {/* Social Media Links Section */}
      <motion.div
-  initial={{ opacity: 0, translateX: "100%" }}
+  initial={{ opacity: 0, translateX: "10%" }}
   whileInView={{ opacity: 1, translateX: 0 }}
-  transition={{ duration: 2 }}
+  transition={{ duration: 1 }}
   className="bg-white shadow-lg rounded-lg p-4"
 >
   <h2 className="text-center text-xl font-bold mb-12 text-[#910b0b] ">Connect with us</h2>
-  <motion.div 
-  initial={{ opacity: 0, rotateX: "90deg" }}
-  whileInView={{ opacity: 1, rotateX: 0 }}
-  transition={{ duration: 6 }}
+  <div 
   className="flex flex-col justify-center items-center space-y-12 ">
     <a
       href="#"
@@ -159,7 +153,7 @@ function Contact() {
     > <a className='text-2xl'><IoLogoTwitter /></a>
       <i className="fab fa-youtube text-xl mr-3"></i> YouTube
     </a>
-  </motion.div>
+  </div>
      </motion.div>
 
 
@@ -168,9 +162,9 @@ function Contact() {
 
     {/* FAQ Section */}
     <motion.div 
-     initial={{opacity:0, translateX:"-100%"}}
+     initial={{opacity:0, translateX:"-10%"}}
      whileInView={{opacity:1, translateX:0}}
-     transition={{duration:2}}
+     transition={{duration:1}}
     className="mt-10 mb-10 p-8">
       <h2 className="text-xl font-bold text-center mb-6 text-[#910b0b]">Frequently Asked Questions</h2>
       {faqData.map((faq, index) => (
@@ -198,13 +192,8 @@ function Contact() {
     
     </div>
    
-    <motion.div
-      initial={{opacity:0, translateY:"100%"}}
-      whileInView={{opacity:1, translateY:0}}
-      transition={{duration:1}}
-    >
+
        <Footer />
-    </motion.div>
 
     </div>
 

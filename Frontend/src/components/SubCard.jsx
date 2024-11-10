@@ -13,7 +13,7 @@ const SubCard = ({ title, donationOptions, addToWishlist }) => {
 
   return (
     <motion.div 
-    initial={{opacity:0, translateX:"-100%"}}
+    initial={{opacity:0, translateX:"-10%"}}
     whileInView={{opacity:1, translateX:0}}
     transition={{duration:2}}
     className="max-w-screen-lg mx-auto  text-center py-8">

@@ -8,6 +8,7 @@ import { IoLogoTwitter } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion'
+import charityLogo from '../assets1/charity-logo.jpg'
 
 const Navbar = () => {
 
@@ -17,11 +18,7 @@ const Navbar = () => {
 
   return (
     <nav className="m-0 p-0 text-white">
-        <motion.div 
-        initial={{opacity:0, scale:0}}
-        whileInView={{opacity:1, scale:1}}
-        transition={{duration:2}}
-        className='bg-white text-black text-sm flex justify-evenly items-center'>
+        <div className='bg-white text-black text-sm flex justify-evenly items-center'>
             <div className='flex item-center'>
                 <IoIosCall className='mt-1'/>
                 <span>+123 986 8764</span>
@@ -40,9 +37,14 @@ const Navbar = () => {
               </button>
             </div>
 
-        </motion.div>    
+        </div>    
       <div className="bg-[#910b0b] flex justify-evenly items-center p-4">
-        <NavLink to='/'><div className="text-2xl font-bold">Yuna</div></NavLink>
+        <NavLink to='/'>
+        <span className="text-2xl font-bold flex gap-1">
+          <img src={charityLogo}  className='mt-1 w-8 h-6'/>
+          Charity
+          </span>
+        </NavLink>
         <div className="hidden md:flex space-x-6">
             <NavLink to='/'><button className="hover:text-gray-400">Home</button></NavLink>
             <NavLink to='/About'> <button className="hover:text-gray-400">About</button> </NavLink>
@@ -61,7 +63,7 @@ const Navbar = () => {
       {
         isActive && (
           <motion.div
-          initial={{opacity:0, translateX:"-100%"}}
+          initial={{opacity:0, translateX:"-50%"}}
           whileInView={{opacity:1, translateX:0}}
           transition={{duration:1}}
            className='md:hidden flex flex-col bg-[#910b0b]'>
