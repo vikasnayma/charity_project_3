@@ -91,7 +91,7 @@ app.put('/donor/update', async (req, res) => {
 
 //   added by shivani
 // Route to get donor information to shoow on dashboard
-app.get("/donor", (req, res)=>{
+app.get("/donorDashboard", (req, res)=>{
 
     const token = req.cookies.token;
 
@@ -136,7 +136,7 @@ GROUP BY
 // added by shivani
 // Routes to get Volunter info to show on volunteer dashboard
 
-app.get("/volunteer", (req,res)=>{
+app.get("/volunteerDashboard", (req,res)=>{
 
 
     const token = req.cookies.token;

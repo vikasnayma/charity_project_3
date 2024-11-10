@@ -27,7 +27,7 @@ function Volunteer() {
       useEffect( () => {
          const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:9000/volunteer`)
+                const res = await axios.get(`http://localhost:9000/volunteerDashboard`)
                 console.log(res.data);
                 const volunteerData = res.data;
 

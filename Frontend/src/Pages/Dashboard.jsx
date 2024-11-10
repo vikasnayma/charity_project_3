@@ -159,7 +159,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:9000/donor`);
+        const res = await axios.get(`http://localhost:9000/donorDashboard`);
         const donorData = res.data[0];
         
         setDonor({
