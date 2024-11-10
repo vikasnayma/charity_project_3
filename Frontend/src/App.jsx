@@ -10,6 +10,7 @@ import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login'
 import Volunteer from './Pages/Volunteer';
 import Signup from './Pages/Signup';
+import PaymentForm from './Pages/PaymentForm';
 
 function App() {
   return (
@@ -27,7 +28,9 @@ function App() {
         <Route path="/Donor" element={<Dashboard />} />
         <Route path="/Volunteer" element={<Volunteer/>} />
         <Route path="/Signup" element={<Signup />} />
+        <Route path="/PaymentForm" element={<PaymentForm />} />
         </Routes>
+
 
        
 
