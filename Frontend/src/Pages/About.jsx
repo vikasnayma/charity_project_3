@@ -18,7 +18,7 @@ export default function About() {
 
       {/* who we are section */}
       <motion.div 
-      initial={{opacity:0, translateX:"-100%"}}
+      initial={{opacity:0, translateX:"-10%"}}
       whileInView={{opacity:1, translateX: 0}}
       transition={{duration:1.5}}
       className="flex flex-col md:flex-row items-center m-12 p-6 border border-gray-300 rounded-lg">
@@ -42,7 +42,7 @@ export default function About() {
 
 {/* single div for motion */}
 <motion.div
-initial={{opacity:0, translateX:"100%"}}
+initial={{opacity:0, translateX:"10%"}}
 whileInView={{opacity:1, translateX: 0}}
 transition={{duration:1.5}}
 >

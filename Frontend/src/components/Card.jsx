@@ -11,7 +11,7 @@ const Card = () => {
   return (
     <section className="flex flex-col md:flex-row items-center justify-between py-16 bg-white px-6 md:px-12 mx-auto">
       <motion.div 
-          initial={{opacity:0, translateX:"-100%"}}
+          initial={{opacity:0, translateX:"-50%"}}
           whileInView={{opacity:1, translateX:0}}
           transition={{duration:1}}
       className="md:w-1/2">

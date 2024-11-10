@@ -221,7 +221,7 @@ function Projects() {
   return <div>
     <Navbar/>
     <motion.div 
-    initial={{opacity:0, rotateX:"90deg"}}
+    initial={{opacity:0, rotateX:"40deg"}}
     whileInView={{opacity:1, rotateX:0}}
     transition={{duration:2}}
     className="container mx-auto px-4 py-8 mt-6">
@@ -238,19 +238,13 @@ function Projects() {
        </div>
     </motion.div>
     <motion.div
-     initial={{opacity:0, translateX:"-100%"}}
+     initial={{opacity:0, translateX:"-10%"}}
      whileInView={{opacity:1, translateX:0}}
      transition={{duration:2}}
      className="my-1">
     {renderPage()}
     </motion.div>
-    <motion.div
-      initial={{opacity:0, translateY:"100%"}}
-      whileInView = {{opacity:1, translateY:0}}
-      transition={{duration:2}}
-    >
        <Footer/>
-    </motion.div>
     
   </div>;
 }

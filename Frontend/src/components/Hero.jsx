@@ -3,6 +3,7 @@ import img1 from '../assets1/img1.jpg'
 import img4 from '../assets1/img4.jpeg'
 import img5 from '../assets1/img5.png'
 import {motion} from 'framer-motion'
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -10,7 +11,7 @@ const Hero = () => {
 <div className="bg-beige text-black max-w-7xl mx-auto min-h-[90vh] flex flex-col md:flex-row justify-center items-center py-4 md:py-6">
   {/* left section */}
   <motion.div
-    initial={{ opacity: 0, translateX: "-100%" }}
+    initial={{ opacity: 0, translateX: "-50%" }}
     whileInView={{ opacity: 1, translateX: 0 }}
     transition={{ duration: 1 }}
     className="max-w-3xl text-center md:text-left space-y-3"
@@ -23,7 +24,7 @@ const Hero = () => {
       If you are dedicated to your cause, you can make a difference in the world.
     </p>
     <button className="bg-[#910b0b] hover:shadow-xl text-white px-5 py-2 rounded shadow-lg transition-transform transform hover:scale-105">
-      Our Projects
+      <Link to='/Projects'>Our Projects</Link>
     </button>
   </motion.div>
   

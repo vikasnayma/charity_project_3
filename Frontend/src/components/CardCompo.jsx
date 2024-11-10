@@ -60,7 +60,7 @@ const CardComponent = ({ setCurrentPage }) => {
       {cardData.map((card, index) => (
         <div
           key={index}
-          className="bg-[#f0f0f0] shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl"
+          className="bg-[#f0f0f0] shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl mb-8"
           onClick={() => setCurrentPage(card.link)}
         >
           <div className="bg-[#910b0b] p-4 flex justify-center items-center">
