@@ -8,7 +8,8 @@ import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Dashboard from './Pages/Dashboard';
 import Login from './components/login'
-import Volunteer from './Pages/Volunteer';
+import Volunteerdashboard from './Pages/Volunteerdashboard';
+import Managerdashboard from './admin-dashboard/Managerdashboard';
 import  Signup from './components/Signup';
 
 function App() {
@@ -16,8 +17,6 @@ function App() {
     <div>
       {/* <Navbar />
       <Hero /> */}
-  
-        
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Projects" element={<Projects />} />
@@ -25,12 +24,11 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Donor" element={<Dashboard />} />
-        <Route path="/Volunteer" element={<Volunteer/>} />
         <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/Donordashboard" element={<Donordashboard/>} /> */}
+        <Route path="/Volunteerdashboard" element={<Volunteerdashboard/>} />
+        <Route path="/Managerdashboard" element={<Managerdashboard/>} />
         </Routes>
-
-       
-
     </div>
   );
 }

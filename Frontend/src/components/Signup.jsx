@@ -32,14 +32,14 @@ const Signup = () => {
       const { token } = response.data;
       localStorage.setItem("token", token);
       // Redirect to a protected route or dashboard
-      if(formData.userType == "Donor") {
-        navigate(`/Donor/${formData.id}`)
+      if(formData.userType == "donor") {
+        window.location.href = "/Donordashboard";
     }
-    else if(formData.userType == "Volunteer") {
-        navigate(`/Volunteer/${formData.id}`)
+    else if(formData.userType == "volunteer") {
+      window.location.href = "/Volunteerdashboard";
     }
-    else if(formData.userType == "Manager") {
-        navigate(`/Manager/${formData.id}`)
+    else if(formData.userType == "manager") {
+      window.location.href = "/Managerdashboard";
     }
     } catch (error) {
       setError("Failed to sign up");
@@ -121,6 +121,43 @@ const Signup = () => {
                     className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a78059] transition duration-300"
                   />
                 </div>
+
+
+                <div className="space-y-2">
+              <p className="text-gray-700 font-medium">Select User Type:</p>
+              <div className="flex items-center space-x-4">
+                <label className="flex items-center text-gray-700">
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="donor"
+                    onChange={handleChange}
+                    className="text-[#74512D] focus:ring-[#a78059] focus:ring-2 transition duration-300"
+                  />
+                  <span className="ml-2">Donor</span>
+                </label>
+                <label className="flex items-center text-gray-700">
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="volunteer"
+                    onChange={handleChange}
+                    className="text-[#74512D] focus:ring-[#a78059] focus:ring-2 transition duration-300"
+                  />
+                  <span className="ml-2">Volunteer</span>
+                </label>
+                <label className="flex items-center text-gray-700">
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="manager"
+                    onChange={handleChange}
+                    className="text-[#74512D] focus:ring-[#a78059] focus:ring-2 transition duration-300"
+                  />
+                  <span className="ml-2">Manager</span>
+                </label>
+              </div>
+            </div>
 
                 <button
                   type="submit"

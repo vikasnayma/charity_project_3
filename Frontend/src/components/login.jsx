@@ -23,14 +23,14 @@ const Login = () => {
       const { token } = response.data;
       Cookies.set("token", token, { expires: 1 }); // Set cookie to expire in 1 day      
       // Redirect to a protected route or dashboard
-      if(formData.userType == "Donor") {
-        navigate(`/Donor/${formData.id}`)
+      if(formData.userType == "donor") {
+        window.location.href = "/Donordashboard";
     }
-    else if(formData.userType == "Volunteer") {
-        navigate(`/Volunteer/${formData.id}`)
+    else if(formData.userType == "volunteer") {
+      window.location.href = "/Volunteerdashboard";
     }
-    else if(formData.userType == "Manager") {
-        navigate(`/Manager/${formData.id}`)
+    else if(formData.userType == "manager") {
+      window.location.href = "/Managerdashboard";
     }
     } catch (error) {
       setError("Invalid email or password");
