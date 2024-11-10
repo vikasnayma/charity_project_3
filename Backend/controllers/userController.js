@@ -4,6 +4,16 @@ const bcrypt = require('bcryptjs');
 const pool = require('../config/dbConnection');
 const { JWT_SECRET } = process.env;
 
+// Function to get table name based on user type
+const getTableName = (userType) => {
+    switch (userType) {
+        case 'donor': return 'donor';
+        case 'volunteer': return 'volunteer';
+        case 'manager': return 'manager';
+        default: throw new Error("Invalid user type");
+    }
+};
+
 //REGISTER 
 const register = (req, res) => {
     // Validate request
@@ -12,10 +22,14 @@ const register = (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    // Query to check if the user already exists
-    const checkUserQuery = 'SELECT * FROM users WHERE LOWER(email) = LOWER($1);'
 
-    pool.query(checkUserQuery, [req.body.email], (err, result) => {
+    const { name, email ,city , phone ,id , password, userType } = req.body;
+    const tableName = getTableName(userType);
+
+    // Query to check if the user already exists
+    const checkUserQuery = `SELECT * FROM ${tableName} WHERE LOWER(email) = LOWER($1)`;
+
+    pool.query(checkUserQuery, [email], (err, result) => {
         if (err) {
             return res.status(500).send({ msg: 'Database error' });
         }
@@ -23,26 +37,25 @@ const register = (req, res) => {
         if (result.rows.length > 0) {
             return res.status(409).send({ msg: 'User is already in use' });
         } else {
-            // Hash the password
-            bcrypt.hash(req.body.password, 10, (err, hash) => {
-                if (err) {
 
+            // Hash the password
+            bcrypt.hash(password, 10, (err, hash) => {
+                if (err) {
                     return res.status(400).send({ msg: err });
                 } else {
                     // Query to insert the new user
                     const insertUserQuery = `
-                            INSERT INTO users (name, email, password)
-                            VALUES ($1, $2, $3)
+                            INSERT INTO  ${tableName} (name, email, city , phone , id , password)
+                            VALUES ($1, $2, $3 , $4 , $5 , $6)
                         `;
 
-                    pool.query(insertUserQuery, [req.body.name, req.body.email, hash], (err, result) => {
+                    pool.query(insertUserQuery, [name, email, city , phone , id , hash], (err, result) => {
                         if (err) {
                             console.log(err);
                             return res.status(400).send({ msg: err });
                         }
-
                         return res.status(201).send({
-                            msg: 'The user has been registered.',
+                            msg: 'The user has been registered successfully.',
                         });
                     });
                 }
@@ -59,9 +72,12 @@ const login = (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const checkUserQuery = 'SELECT * FROM users WHERE LOWER(email) = LOWER($1);';
+    const { email, password, userType } = req.body;
+    const tableName = getTableName(userType);
 
-    pool.query(checkUserQuery, [req.body.email], (err, result) => {
+    const checkUserQuery = `SELECT * FROM  ${tableName} WHERE LOWER(email) = LOWER($1)`;
+
+    pool.query(checkUserQuery, [email], (err, result) => {
         if (err) {
             return res.status(500).send({ msg: 'Database error' });
         }
@@ -72,7 +88,7 @@ const login = (req, res) => {
             });
         }
         const user = result.rows[0];
-        bcrypt.compare(req.body.password , user.password, (bErr, bResult) => {
+        bcrypt.compare(password , user.password, (bErr, bResult) => {
             if (bErr) {
                 return res.status(400).send({
                     msg: bErr
@@ -81,7 +97,7 @@ const login = (req, res) => {
             if (bResult) {
                 const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
                 return res.status(200).send({
-                    msg: 'Logged In',
+                    msg: 'Logged In Successfully',
                     token,
                     user
                 });
@@ -100,10 +116,12 @@ const login = (req, res) => {
 const getUser = (req , res) => {
     const authToken = req.headers.authorization.split(' ')[1];
     const decode = jwt.verify(authToken , JWT_SECRET);
-    const checkUserQuery = 'SELECT * FROM users WHERE id = $1';
+    const tableName = getTableName(decode.userType);
+
+    const checkUserQuery = `SELECT * FROM ${tableName} WHERE id = $1`;
     pool.query(checkUserQuery , [decode.id] , function(err , result , fields){
         if(err) throw err;
-        return res.status(200).send({ success: true , data: result.rows[0] , message: 'Fetched Successfully'});
+        return res.status(200).send({ success: true , data: result.rows[0] , message: 'User Fetched Successfully'});
     });
 }
 
@@ -112,3 +130,6 @@ module.exports = {
     login,
     getUser
 }
+
+
+
