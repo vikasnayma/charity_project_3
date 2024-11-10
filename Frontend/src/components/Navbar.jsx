@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosCall } from "react-icons/io";
 import { CiMail } from "react-icons/ci";
 import { CiFacebook } from "react-icons/ci";
@@ -9,12 +9,41 @@ import { CgProfile } from "react-icons/cg";
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion'
 import charityLogo from '../assets1/charity-logo.jpg'
+import axios from 'axios'
 
 const Navbar = () => {
 
   const [isActive, setIsActive] = useState(false);
+  const [authen, setAuthen] = useState(false);
   const Navigation = useNavigate();
   
+  axios.defaults.withCredentials = true;
+
+  useEffect( () => {
+     axios.get(`http://localhost:9000/auth`)
+     .then( res => {
+      if( res.data.Status === "Success" ) {
+        setAuth(true)
+      } else {
+        setAuth(false);
+      }
+     })
+  }, [])
+
+  const handleLogout = () => {
+    axios.get(`http://localhost:9000/logout`)
+    .then( res => {
+        if( res.data.Status === "Success" ) {
+           location.reload(true);
+        }
+        else {
+          alert("error")
+        }
+    })
+    .catch( err => console.log(err) )
+  }
+
+
 
   return (
     <nav className="m-0 p-0 text-white">
@@ -32,9 +61,19 @@ const Navbar = () => {
                 <a><IoLogoTwitter /></a>
             </div>
             <div className='flex item-center'>
-              <button className=' text-blue-950 font-bold p-1 rounded'>
+              {
+                authen ?
+                <button onClick={handleLogout}
+                className=' text-blue-950 font-bold p-1 rounded'>
+                 Logout
+                </button>
+                :
+                <button className=' text-blue-950 font-bold p-1 rounded'>
                 <NavLink to='/login'>Login</NavLink>
-              </button>
+                </button>
+
+              }
+              
             </div>
 
         </div>    

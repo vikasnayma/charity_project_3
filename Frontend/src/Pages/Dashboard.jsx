@@ -138,7 +138,6 @@ export const AllProjects = [
 
 function Dashboard() {
   const [donor, setDonor] = useState({
-    id: "",
     name: "",
     city: "",
     phone: "",

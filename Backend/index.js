@@ -172,3 +172,29 @@ ORDER BY
     })
 })
   
+
+
+// added by shivani
+const verifyUser = (req, res, next) => {
+    const token = req.cookies.token;
+    if( !token ) {
+        return res.json({Message: "we need token please provide it"})
+    }
+    else {
+        jwt.verify(token, JWT_SECRET, (err, decoded) => {
+            if( err ) {
+                return res.json({Message: "Authentication error"})
+            }
+            else {
+                next();
+            }
+        })
+    }
+}
+app.get("/auth", verifyUser, (req, res) => {
+    return res.json({Status: "Success"});
+})
+app.get('/logout', (req,res)=> {
+    res.clearCookie('token');
+    return res.json({Status: "Success"})
+})
