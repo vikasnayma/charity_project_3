@@ -19,7 +19,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:9000/api/login", formData);
+      const response = await axios.post("http://localhost:9000/api/login", formData , {
+        withCredentials: true
+    });
       const { token } = response.data;
       Cookies.set("token", token, { expires: 1 }); // Set cookie to expire in 1 day      
       // Redirect to a protected route or dashboard

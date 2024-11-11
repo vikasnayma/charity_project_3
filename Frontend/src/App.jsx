@@ -6,9 +6,9 @@ import Home from './Pages/Home'
 import Projects from './Pages/Projects'
 import About from './Pages/About'
 import Contact from './Pages/Contact'
-import Login from './components/login'
+import Login from './components/Login'
 import Volunteerdashboard from './Pages/Volunteerdashboard';
-import Managerdashboard from './manager-dashboard/ManagerDashboard';
+import Managerdashboard from './manager-dashboard/Managerdashboard';
 import  Signup from './components/Signup';
 import Donordashboard from './Pages/Donordashboard'
 import PaymentForm from './Pages/PaymentForm'
@@ -24,11 +24,15 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
         <Route path="/Donordashboard" element={<Donordashboard/>} />
         <Route path="/Volunteerdashboard" element={<Volunteerdashboard/>} />
-        <Route path="/manager/*" element={<Managerdashboard/>} />
+        <Route path="/Managerdashboard" element={<Managerdashboard/>} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path='/PaymentForm' element={<PaymentForm/>} />
         </Routes>
+
+
+       
 
     </div>
   );
