@@ -176,3 +176,37 @@ exports.addProject = async(req , res) => {
         return res.status(500).json({error: "Could not get project with given id"});
     }
  }
+
+
+ // Controller function to get all donations by donor
+exports.getAllDonationDoneByADonor = async (req, res) => {
+    try {
+        const donorId = req.params.id;
+        const donations = await Manager.getAllDonationDoneByADonor(donorId);
+        if (!donations) {
+            return res.status(404).json({ msg: "No donations found for this donor." });
+        }
+        return res.status(200).json(donations);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Could not retrieve donations for the given donor." });
+    }
+
+
+    exports.getProjectByVolunteer = async (req, res) => {
+        try {
+            const volunteerId = req.params.id;
+            const projects = await Manager.getProjectByVolunteer(volunteerId);
+            if (!projects) {
+                return res.status(404).json({ msg: "No projects found for this volunteer." });
+            }   
+            return res.status(200).json(projects);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ error: "Could not retrieve projects for the given volunteer." });
+        }
+    };
+    
+
+    
+};

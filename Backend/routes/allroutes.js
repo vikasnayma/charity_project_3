@@ -18,6 +18,7 @@ router.get("/project/:id" , manager.getProjectById);
 router.post("/donor" , manager.addDonor);
 router.get('/donor' , manager.getAllDonor);
 router.get('/donor/:id' , manager.getDonorById);
+router.get("/donordonation/:id", manager.getAllDonationDoneByADonor);
 
 //volunteer ROUTES
 router.post("/volunteer" , manager.addVolunteer);
@@ -26,6 +27,7 @@ router.get('/volunteer/:id' ,manager.getVolunteerById);
 
 //15
 router.get("/volunteerassignment/:id" , manager.getAllVolunteerWithinAProject);
+router.get("/projectbyvolunteer/:id", manager.getProjectByVolunteer );
 
 //16
 router.get("/totaldonation/:id" , manager.getTotalNoDonationForAProject);

@@ -17,31 +17,31 @@ const Navbar = () => {
   const [authen, setAuthen] = useState(false);
   const Navigation = useNavigate();
   
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
 
-  useEffect( () => {
-     axios.get(`http://localhost:9000/auth`)
-     .then( res => {
-      if( res.data.Status === "Success" ) {
-        setAuth(true)
-      } else {
-        setAuth(false);
-      }
-     })
-  }, [])
+  // useEffect( () => {
+  //    axios.get(`http://localhost:9000/auth`)
+  //    .then( res => {
+  //     if( res.data.Status === "Success" ) {
+  //       setAuth(true)
+  //     } else {
+  //       setAuth(false);
+  //     }
+  //    })
+  // }, [])
 
-  const handleLogout = () => {
-    axios.get(`http://localhost:9000/logout`)
-    .then( res => {
-        if( res.data.Status === "Success" ) {
-           location.reload(true);
-        }
-        else {
-          alert("error")
-        }
-    })
-    .catch( err => console.log(err) )
-  }
+  // const handleLogout = () => {
+  //   axios.get(`http://localhost:9000/logout`)
+  //   .then( res => {
+  //       if( res.data.Status === "Success" ) {
+  //          location.reload(true);
+  //       }
+  //       else {
+  //         alert("error")
+  //       }
+  //   })
+  //   .catch( err => console.log(err) )
+  // }
 
 
 
