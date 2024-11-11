@@ -28,7 +28,9 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:9000/api/register", formData);
+      const response = await axios.post("http://localhost:9000/api/register", formData , {
+        withCredentials: true
+    });
       const { token } = response.data;
       localStorage.setItem("token", token);
       // Redirect to a protected route or dashboard

@@ -8,11 +8,16 @@ const userRouter = require('./routes/userRoutes');
 const allRouter = require('./routes/allroutes');
 
 const cors = require('cors');
+
+app.use(cors({
+    origin: 'http://localhost:5173', // replace with your frontend URL
+    credentials: true
+}));
+
 const PORT = 9000;
 
 
 app.use(express.json());
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
