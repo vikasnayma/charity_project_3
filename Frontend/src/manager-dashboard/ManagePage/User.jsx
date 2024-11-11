@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Users = () => {
+const User = () => {
   const [donors, setDonors] = useState([]);
   const [volunteers, setVolunteers] = useState([]);
   const [admins, setAdmins] = useState([]);
@@ -133,6 +133,6 @@ const Table = ({ data, onView }) => (
   </table>
 );
 
-export default Users;
+export default User;
 
 
