@@ -84,12 +84,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider and Footer Bottom */}
-        <div className="border-t border-gray-700 mt-8 pt-4 text-center">
-          <p className="text-sm">
-            &copy; 2024 Your Company LLC. <a href="/" className="hover:underline">Yuna Theme</a> by <a href="/" className="hover:underline">SSVR Design</a>.
-          </p>
-        </div>
       </div>
     </footer>
   );

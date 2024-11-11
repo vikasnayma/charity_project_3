@@ -28,7 +28,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:9000/api/register", formData , {
+      const response = await axios.post("http://localhost:9000/api/auth/register", formData , {
         withCredentials: true
     });
       const { token } = response.data;
@@ -98,17 +98,6 @@ const Signup = () => {
                     placeholder="Password"
                     onChange={handleChange}
                     value={formData.password}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a78059] transition duration-300"
-                  />
-                </div>
-                <div className="relative">
-                  <FaUser className="absolute top-3 left-3 text-gray-400" />
-                  <input
-                    type="number"
-                    name="id"
-                    placeholder="id"
-                    onChange={handleChange}
-                    value={formData.id}
                     className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a78059] transition duration-300"
                   />
                 </div>

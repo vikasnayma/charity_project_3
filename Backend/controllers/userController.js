@@ -23,7 +23,7 @@ const register = (req, res) => {
     }
 
 
-    const { name, email ,city , phone ,id , password, userType } = req.body;
+    const { name, email ,city , phone , password, userType } = req.body;
     const tableName = getTableName(userType);
 
     // Query to check if the user already exists
@@ -45,11 +45,11 @@ const register = (req, res) => {
                 } else {
                     // Query to insert the new user
                     const insertUserQuery = `
-                            INSERT INTO  ${tableName} (name, email, city , phone , id , password)
-                            VALUES ($1, $2, $3 , $4 , $5 , $6)
+                            INSERT INTO  ${tableName} (name, email, city , phone , password)
+                            VALUES ($1, $2, $3 , $4 , $5)
                         `;
 
-                    pool.query(insertUserQuery, [name, email, city , phone , id , hash], (err, result) => {
+                    pool.query(insertUserQuery, [name, email, city , phone, hash], (err, result) => {
                         if (err) {
                             console.log(err);
                             return res.status(400).send({ msg: err });
@@ -67,7 +67,8 @@ const register = (req, res) => {
 //LOGIN
 const login = (req, res) => {
     const errors = validationResult(req);
-
+    
+    
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
@@ -134,3 +135,64 @@ module.exports = {
 
 
 
+
+
+// const userController = {
+//   signup: (req, res) => {
+//     const { email, name, phone, password , city , userType } = req.body;
+//     const table = getTableName(userType);
+//     bcrypt.hash(password, 10, (err, hash) => {
+//       if (err) {
+//         console.error('Error hashing password:', err);
+//         return res.status(500).json({ error: 'Internal server error' });
+//       }
+
+//       User.createUser(email, name, phone, password , city , table ,  (err, result) => {
+//         if (err) {
+//           console.error('Error executing query:', err);
+//           return res.status(500).json({ error: 'Internal server error' });
+//         }
+//         res.status(201).json({ message: 'User registered successfully' });
+//       });
+//     });
+//   },
+
+//   login: (req, res) => {
+//     const { email, password , userType } = req.body;
+//     const table = getTableName(userType); 
+//     User.getUserByEmail(email ,  table , (err, result) => {
+//       if (err) {
+//         console.error('Error executing query:', err);
+//         return res.status(500).json({ error: 'Internal server error' });
+//       }
+//       console.log(result.rows);
+      
+
+//       if (result.rows.length === 0) {
+//         return res.status(401).json({ error: 'Invalid email or password' });
+//       }
+
+//       const user = result.rows[0];
+      
+//       bcrypt.compare(password, user.password, (err, isMatch) => {
+//         console.log(password);
+//         console.log(user.password);
+        
+        
+//         if (err) {
+//           console.error('Error comparing passwords:', err);
+//           return res.status(500).json({ error: 'Internal server error' });
+//         }
+        
+//         if (!isMatch) {
+//           return res.status(401).json({ error: 'Invalid email or password' });
+//         }
+
+//         const token = jwt.sign({ userId: user.userid }, JWT_SECRET, { expiresIn: '1h' });
+//         res.json({ token });
+//       });
+//     });
+//   }
+// };
+
+// module.exports = userController;
