@@ -4,7 +4,10 @@ import { FaBell, FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
   const handleProfileClick = () => {
-    window.location.href = '/profile';  // Redirect to the profile page
+    window.location.href = '/manager/profile';  // Redirect to the profile page
+  };
+  const handleNotifiClick = () => {
+    window.location.href = '/manager/notification';  // Redirect to the notifi page
   };
   return (
     <header className="flex items-center justify-between bg-white px-6 py-4 shadow-md">
@@ -15,7 +18,7 @@ const Header = () => {
       <div className="flex items-center space-x-4">
         {/* Notifications */}
         <button className="text-gray-600 hover:text-[#910b0b]">
-          <FaBell className="text-2xl" />
+          <FaBell className="text-2xl" onClick={handleNotifiClick} />
         </button>
         
         {/* User Profile */}
