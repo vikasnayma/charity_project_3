@@ -39,6 +39,7 @@ app.listen(PORT, () => {
 
 
 
+<<<<<<< HEAD
 
 //   added by shivani
 // const jwt = require("jsonwebtoken"); 
@@ -202,3 +203,5 @@ app.listen(PORT, () => {
 //     res.clearCookie('token');
 //     return res.json({Status: "Success"})
 // })
+=======
+>>>>>>> b7e2d03c67349d15464da969e8cd51e8fefff1af

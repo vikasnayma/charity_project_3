@@ -95,8 +95,14 @@ const Manager = {
     getAllDonationDoneByADonor: async (email) => {
         const query = `SELECT transaction_Id  , email , project_Id , payment_type , date , time
         FROM donation
+<<<<<<< HEAD
         WHERE email = $1`;
         const result = await pool.query(query, [email]);
+=======
+        WHERE d_id = $1
+        ORDER BY date DESC, time DESC`;
+        const result = await pool.query(query, [d_id]);
+>>>>>>> b7e2d03c67349d15464da969e8cd51e8fefff1af
         return result.rows[0];
     },
 
@@ -196,6 +202,19 @@ const Manager = {
         const result = await pool.query(query, values);
         return result.rows[0];
     },
+
+    getProjectByVolunteer: async (V_ID) => {
+        const query = `SELECT  p.Project_ID,p.Project_name,va.Date_of_assign,va.Date_of_completion
+            FROM 
+            VolunteerAssignment va
+            JOIN 
+            Project p ON va.Project_ID = p.Project_ID
+            WHERE 
+            va.V_ID = $1`;
+        const result = await pool.query(query, [V_ID]);
+        return result.rows;
+        
+    }
 }
 
 module.exports = Manager;
