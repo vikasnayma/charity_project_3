@@ -10,39 +10,20 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion'
 import charityLogo from '../assets1/charity-logo.jpg'
 import axios from 'axios'
+import Cookies from 'js-cookie';
 
 const Navbar = () => {
 
   const [isActive, setIsActive] = useState(false);
   const [authen, setAuthen] = useState(false);
   const Navigation = useNavigate();
-  
-  // axios.defaults.withCredentials = true;
+  const token = Cookies.get("token");
 
-  // useEffect( () => {
-  //    axios.get(`http://localhost:9000/auth`)
-  //    .then( res => {
-  //     if( res.data.Status === "Success" ) {
-  //       setAuth(true)
-  //     } else {
-  //       setAuth(false);
-  //     }
-  //    })
-  // }, [])
 
-  // const handleLogout = () => {
-  //   axios.get(`http://localhost:9000/logout`)
-  //   .then( res => {
-  //       if( res.data.Status === "Success" ) {
-  //          location.reload(true);
-  //       }
-  //       else {
-  //         alert("error")
-  //       }
-  //   })
-  //   .catch( err => console.log(err) )
-  // }
-
+  const handleLogout = () => {
+    Cookies.remove("token");
+    navigate("/Home");
+  };
 
 
   return (
@@ -62,20 +43,17 @@ const Navbar = () => {
             </div>
             <div className='flex item-center'>
               {
-                authen ?
+              token ? 
                 <button onClick={handleLogout}
                 className=' text-blue-950 font-bold p-1 rounded'>
                  Logout
-                </button>
+                </button> 
                 :
                 <button className=' text-blue-950 font-bold p-1 rounded'>
                 <NavLink to='/login'>Login</NavLink>
                 </button>
-
               }
-              
             </div>
-
         </div>    
       <div className="bg-[#910b0b] flex justify-evenly items-center p-4">
         <NavLink to='/'>

@@ -11,6 +11,7 @@ const cors = require('cors');
 
 app.use(cors({
     origin: 'http://localhost:5173', // replace with your frontend URL
+    methods: 'GET,POST,PUT,DELETE',
     credentials: true
 }));
 

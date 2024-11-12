@@ -49,12 +49,12 @@ const Signup = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#F8F4E1] to-[#E8DFC7] min-h-screen">
+    <div className="bg-gradient-to-b from-[#dbb8b8] to-[#8c7a7a] min-h-screen">
       <div className="flex items-center justify-center min-h-[calc(100vh-64px)]">
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl w-full">
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-1/2 p-10">
-              <h2 className="text-4xl font-bold text-[#543310] mb-8">Create Account</h2>
+              <h2 className="text-4xl font-bold text-[#5f1515] mb-8">Create Account</h2>
               {error && <p className="text-red-500">{error}</p>}
               <form onSubmit={handleSubmit} className="space-y-6">
               <div className="relative">
@@ -123,7 +123,7 @@ const Signup = () => {
                     name="userType"
                     value="donor"
                     onChange={handleChange}
-                    className="text-[#74512D] focus:ring-[#a78059] focus:ring-2 transition duration-300"
+                    className="text-[#5f1515] focus:ring-[#a78059] focus:ring-2 transition duration-300"
                   />
                   <span className="ml-2">Donor</span>
                 </label>
@@ -133,7 +133,7 @@ const Signup = () => {
                     name="userType"
                     value="volunteer"
                     onChange={handleChange}
-                    className="text-[#74512D] focus:ring-[#a78059] focus:ring-2 transition duration-300"
+                    className="text-[#5f1515] focus:ring-[#a78059] focus:ring-2 transition duration-300"
                   />
                   <span className="ml-2">Volunteer</span>
                 </label>
@@ -143,7 +143,7 @@ const Signup = () => {
                     name="userType"
                     value="manager"
                     onChange={handleChange}
-                    className="text-[#74512D] focus:ring-[#a78059] focus:ring-2 transition duration-300"
+                    className="text-[#5f1515] focus:ring-[#a78059] focus:ring-2 transition duration-300"
                   />
                   <span className="ml-2">Manager</span>
                 </label>
@@ -152,7 +152,7 @@ const Signup = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-[#74512D] text-white rounded-lg py-3 font-semibold hover:bg-[#543310] transition duration-300 transform hover:scale-105"
+                  className="w-full bg-[#5f1515] text-white rounded-lg py-3 font-semibold hover:bg-[#543310] transition duration-300 transform hover:scale-105"
                 >
                   Sign Up
                 </button>
@@ -160,7 +160,7 @@ const Signup = () => {
               <div className="mt-8 text-center">
                 <p className="text-sm text-gray-600">
                   Already have an account?
-                  <Link to="/login" className="ml-2 text-[#a78059] hover:underline focus:outline-none font-semibold">
+                  <Link to="/login" className="ml-2 text-[#5f1515] hover:underline focus:outline-none font-semibold">
                     Log In
                   </Link>
                 </p>

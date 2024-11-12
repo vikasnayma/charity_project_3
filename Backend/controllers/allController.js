@@ -191,9 +191,9 @@ exports.getAllDonationDoneByADonor = async (req, res) => {
         console.error(error);
         return res.status(500).json({ error: "Could not retrieve donations for the given donor." });
     }
+}
 
-
-    exports.getProjectByVolunteer = async (req, res) => {
+exports.getProjectByVolunteer = async (req, res) => {
         try {
             const volunteerId = req.params.id;
             const projects = await Manager.getProjectByVolunteer(volunteerId);
@@ -204,9 +204,5 @@ exports.getAllDonationDoneByADonor = async (req, res) => {
         } catch (error) {
             console.error(error);
             return res.status(500).json({ error: "Could not retrieve projects for the given volunteer." });
-        }
-    };
-    
-
-    
-};
+        };
+}
