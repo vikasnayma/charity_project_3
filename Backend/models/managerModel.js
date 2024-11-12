@@ -51,10 +51,10 @@ const Manager = {
 
     //4 ADD DONATION
     addDonation: async (donationData) => {
-        const { transaction_id, email , date, time, amount, project_id, payment_type } = donationData;
-        const query = `INSERT INTO donation (transaction_id , email , date , time , amount , project_id , payment_type)
+        const {transaction_Id, email , date, time, amount, project_Id, payment_type } = donationData;
+        const query = `INSERT INTO donation (transaction_Id, email , date, time, amount, project_Id, payment_type)
         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
-        const values = [transaction_id, email , date, time, amount, project_id, payment_type];
+        const values = [transaction_Id, email , date, time, amount, project_Id, payment_type];
         const result = await pool.query(query, values);
         return result.rows[0];
     },
@@ -95,14 +95,9 @@ const Manager = {
     getAllDonationDoneByADonor: async (email) => {
         const query = `SELECT transaction_Id  , email , project_Id , payment_type , date , time
         FROM donation
-<<<<<<< HEAD
-        WHERE email = $1`;
-        const result = await pool.query(query, [email]);
-=======
-        WHERE d_id = $1
+        WHERE email = $1
         ORDER BY date DESC, time DESC`;
-        const result = await pool.query(query, [d_id]);
->>>>>>> b7e2d03c67349d15464da969e8cd51e8fefff1af
+        const result = await pool.query(query, [email]);
         return result.rows[0];
     },
 
