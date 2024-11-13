@@ -30,11 +30,7 @@ function Contact() {
     {
       question: 'How soon will I get a response?',
       answer: 'We aim to respond within 24-48 hours on business days.',
-    },
-    {
-      question: 'Can I subscribe to newsletters?',
-      answer: 'Yes, you can subscribe to our newsletter by providing your email in the newsletter section above.',
-    },
+    }
   ];
   
 

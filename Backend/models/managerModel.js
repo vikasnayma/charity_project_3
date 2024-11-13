@@ -181,7 +181,7 @@ const Manager = {
         return result.rows;
     },
 
-    //2
+    
     getProjectById: async (project_Id) => {
         const query = `SELECT * FROM project WHERE project_Id = $1`;
         const result = await pool.query(query, [project_Id]);
@@ -198,18 +198,118 @@ const Manager = {
         return result.rows[0];
     },
 
-    getProjectByVolunteer: async (V_ID) => {
-        const query = `SELECT  p.Project_ID,p.Project_name,va.Date_of_assign,va.Date_of_completion
+    getProjectByVolunteer: async(email) => {
+        const query = `SELECT  p.project_ID,p.project_name,va.date_of_assign,va.date_of_completion
             FROM 
-            VolunteerAssignment va
+            volunteerassignment va
             JOIN 
-            Project p ON va.Project_ID = p.Project_ID
+            project p ON va.project_ID = p.project_ID
             WHERE 
-            va.V_ID = $1`;
-        const result = await pool.query(query, [V_ID]);
+            va.email = $1`;
+        const result = await pool.query(query, [email]);
         return result.rows;
-        
-    }
+    
+    },
+
+    // Method to get the total donations
+getTotalDonations: async () => {
+    const query = `SELECT SUM(amount) AS total FROM donation`;
+    const result = await pool.query(query);
+    return result.rows[0]?.total || 0; // Return total donations
+  },
+  
+  getTotalDonationUsed: async () => {
+      const query = `
+        SELECT SUM(retrieval_amount) AS total_spent
+        FROM fundinvestment
+      `;
+      const result = await pool.query(query);
+      return result.rows[0]?.total_spent || 0; // Return total money used/spent in projects
+    },
+  
+  // Method to get top donors
+  getTopDonors: async () => {
+    const query = `
+      SELECT d.name, SUM(dn.amount) AS total_donated
+      FROM donor d
+      JOIN donation dn ON d.email = dn.email
+      GROUP BY d.name
+      ORDER BY total_donated DESC
+      LIMIT 5
+    `;
+    const result = await pool.query(query);
+    return result.rows; // Return top 5 donors
+  },
+  
+  // Method to get top volunteers based on completed assignments
+  getTopVolunteers: async () => {
+    const query = `
+      SELECT v.name, COUNT(va.project_ID) AS total_projects
+      FROM volunteer v
+      JOIN volunteerassignment va ON v.email = va.v_email
+      WHERE va.date_of_completion IS NOT NULL
+      GROUP BY v.name
+      ORDER BY total_projects DESC
+      LIMIT 5
+    `;
+    const result = await pool.query(query);
+    return result.rows; // Return top 5 volunteers
+  },
+  
+  // Method to get donation sources by project
+  getDonationSources: async () => {
+    const query = `
+      SELECT p.project_name AS name, SUM(d.amount) AS total_donated
+      FROM project p
+      JOIN donation d ON p.project_ID = d.project_ID
+      GROUP BY p.project_name
+      ORDER BY total_donated DESC
+    `;
+    const result = await pool.query(query);
+    return result.rows; // Return donation sources by project
+  },
+  
+  // Additional method to get project by ID, as requested
+  getProjectById: async (project_Id) => {
+    const query = `SELECT * FROM project WHERE project_ID = $1`;
+    const result = await pool.query(query, [project_Id]);
+    return result.rows[0]; // Return project by ID
+  },
+
+  // Get volunteers who are not currently assigned to any project
+ getUnassignedVolunteers : async () => {
+    const query = `
+        SELECT v.name, v.city, v.phone, v.email
+        FROM volunteer v
+        LEFT JOIN volunteerassignment va ON v.email = va.v_email
+        WHERE va.project_ID IS NULL OR va.date_of_completion IS NOT NULL;
+    `;
+    const result = await pool.query(query);
+    return result.rows; // Returns the unassigned volunteers
+},
+// Get all volunteers assigned to a specific project
+ getAssignedVolunteersForProject : async (projectId) => {
+    const query = `
+        SELECT v.name, v.city, v.phone, v.email
+        FROM volunteer v
+        JOIN volunteerassignment va ON v.email = va.v_email
+        WHERE va.project_ID = $1 AND va.date_of_completion IS NULL;
+    `;
+    const result = await pool.query(query, [projectId]);
+    return result.rows; // This will return the list of volunteers working on the project
+},
+// Get projects with less than 10 volunteers
+ getProjectsWithLessThan10Volunteers : async () => {
+    const query = `
+        SELECT p.project_name, p.project_ID, COUNT(va.v_email) AS volunteer_count
+        FROM project p
+        LEFT JOIN volunteerassignment va ON p.project_ID = va.project_ID
+        GROUP BY p.project_ID
+        HAVING COUNT(va.v_email) < 10;
+    `;
+    const result = await pool.query(query);
+    return result.rows; // This will return the projects that have fewer than 10 volunteers
+},
 }
 
 module.exports = Manager;

@@ -22,13 +22,13 @@ const Navbar = () => {
 
   const handleLogout = () => {
     Cookies.remove("token");
-    navigate("/Home");
+    navigate('/Login');
   };
 
 
   return (
     <nav className="m-0 p-0 text-white">
-        <div className='bg-white text-black text-sm flex justify-evenly items-center'>
+        <div className='bg-white text-black py-2 text-sm flex justify-evenly items-center'>
             <div className='flex item-center'>
                 <IoIosCall className='mt-1'/>
                 <span>+123 986 8764</span>
@@ -49,7 +49,7 @@ const Navbar = () => {
                  Logout
                 </button> 
                 :
-                <button className=' text-blue-950 font-bold p-1 rounded'>
+                <button className=' text-white font-bold px-4 py-2 rounded bg-[#781717] hover:bg-[#942b2b]'>
                 <NavLink to='/login'>Login</NavLink>
                 </button>
               }

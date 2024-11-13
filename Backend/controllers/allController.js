@@ -206,3 +206,96 @@ exports.getProjectByVolunteer = async (req, res) => {
             return res.status(500).json({ error: "Could not retrieve projects for the given volunteer." });
         };
 }
+
+exports.getTotalDonations = async (req, res) => {
+    try {
+      const totalDonations = await Manager.getTotalDonations();
+      return res.status(200).json({ total: totalDonations });
+    } catch (error) {
+      return res.status(500).json({ error: 'Could not fetch total donations' });
+    }
+  };
+  
+  // Controller for donation revenue
+  exports.getDonationRevenue = async (req, res) => {
+    try {
+      const donationRevenue = await Manager.getDonationRevenue();
+      return res.status(200).json({ revenue: donationRevenue });
+    } catch (error) {
+      return res.status(500).json({ error: 'Could not fetch donation revenue' });
+    }
+  };
+  
+  // Controller for top donors
+  exports.getTopDonors = async (req, res) => {
+    try {
+      const topDonors = await Manager.getTopDonors();
+      return res.status(200).json(topDonors);
+    } catch (error) {
+      return res.status(500).json({ error: 'Could not fetch top donors' });
+    }
+  };
+  
+  // Controller for top volunteers
+  exports.getTopVolunteers = async (req, res) => {
+    try {
+      const topVolunteers = await Manager.getTopVolunteers();
+      return res.status(200).json(topVolunteers);
+    } catch (error) {
+      return res.status(500).json({ error: 'Could not fetch top volunteers' });
+    }
+  };
+  
+  // Controller for donation sources
+  exports.getDonationSources = async (req, res) => {
+    try {
+      const donationSources = await Manager.getDonationSources();
+      return res.status(200).json(donationSources);
+    } catch (error) {
+      return res.status(500).json({ error: 'Could not fetch donation sources' });
+    }
+}
+
+//Volunteer assignment page 
+exports.getUnassignedVolunteers = async (req, res) => {
+    try {
+        const unassignedVolunteers = await Manager.getUnassignedVolunteers();
+        
+        if (unassignedVolunteers.length === 0) {
+            return res.status(404).json({ msg: "No unassigned volunteers found" });
+        }
+        return res.status(200).json(unassignedVolunteers); // Return unassigned volunteers list
+    } catch (error) {
+        console.error("Error fetching unassigned volunteers:", error);
+        return res.status(500).json({ error: "Could not fetch unassigned volunteers" });
+    }
+};
+
+exports.getProjectsWithLessThan10Volunteers = async (req, res) => {
+    try {
+        const projects = await Manager.getProjectsWithLessThan10Volunteers();
+        
+        if (projects.length === 0) {
+            return res.status(404).json({ msg: "No projects with less than 10 volunteers found" });
+        }
+        return res.status(200).json(projects); // Return projects list
+    } catch (error) {
+        console.error("Error fetching projects with less than 10 volunteers:", error);
+        return res.status(500).json({ error: "Could not fetch projects with less than 10 volunteers" });
+    }
+};
+
+exports.getAssignedVolunteersForProject = async (req, res) => {
+    const projectId = req.params.id; // Get project ID from URL params
+    try {
+        const allVolunteers = await Manager.getAssignedVolunteersForProject(projectId);
+        
+        if (allVolunteers.length === 0) {
+            return res.status(404).json({ msg: "No volunteers assigned to this project" });
+        }
+        return res.status(200).json(allVolunteers); // Return assigned volunteers for project
+    } catch (error) {
+        console.error("Error fetching volunteers for project:", error);
+        return res.status(500).json({ error: "Could not fetch volunteers for the project" });
+    }
+};

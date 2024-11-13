@@ -38,5 +38,10 @@ router.get("/fundinvestment/:id" , manager.getTotalFundInvestedByAManager);
 //18
 router.get("/donation/:id" , manager.updateDonationById);
 
+router.get('/total-donations', manager.getTotalDonations);
+router.get('/donation-revenue', manager.getDonationRevenue);
+router.get('/top-donors', manager.getTopDonors);
+router.get('/top-volunteers',manager.getTopVolunteers);
+router.get('/donation-sources', manager.getDonationSources);
 
 module.exports  = router;

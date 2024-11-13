@@ -1,14 +1,23 @@
-
-
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as filledHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as unfilledHeart } from "@fortawesome/free-regular-svg-icons";
 import { motion } from 'framer-motion'
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 const SubCard = ({ title, donationOptions, addToWishlist }) => {
   
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+
+  const handleDonateClick = () => {
+    if (!token) {
+      navigate('/Login');  // If no token, redirect to login
+    } else {
+      navigate('/PaymentForm');  // If token exists, redirect to PaymentForm
+    }
+  };
 
 
   return (
@@ -26,8 +35,10 @@ const SubCard = ({ title, donationOptions, addToWishlist }) => {
             <p className="text-gray-500 mb-2 font-semibold">${option.price}</p>
             <p className="text-gray-600 mb-4">{option.description}</p>
             <div className="flex justify-between items-center mt-4">
-              <button className="mx-auto bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
-                <Link to='/PaymentForm'>Donate</Link>
+              <button
+              onClick={handleDonateClick} 
+              className="mx-auto bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
+                Donate
               </button>
               
             </div>
@@ -39,5 +50,3 @@ const SubCard = ({ title, donationOptions, addToWishlist }) => {
 };
 
 export default SubCard;
-
-
