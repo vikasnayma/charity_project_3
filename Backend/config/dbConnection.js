@@ -9,6 +9,7 @@ const pool = new Pool({
   password: DB_PASSWORD,
   port: 5432, // Default PostgreSQL port
 });
+
 console.log("db connected succesfully");
 
 module.exports = pool;
