@@ -24,8 +24,15 @@ const Login = () => {
         withCredentials: true,
       });
 
-      const { token } = response.data;
-      Cookies.set("token", token, { expires: 1 }); // Store token in cookie for 1 day
+
+      // Assuming you get the token from the backend after a successful login
+      const token = response.data.token;  // Or wherever you get the token from
+      localStorage.setItem("token", token);  // Store it in localStorage
+
+
+
+      // const { token } = response.data;
+      // Cookies.set("token", token, { expires: 1 }); // Store token in cookie for 1 day
 
       if (formData.userType == "donor") {
         navigate("/Donordashboard");

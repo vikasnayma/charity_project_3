@@ -96,7 +96,7 @@ const login = (req, res) => {
                 });
             }
             if (bResult) {
-                const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
+                const token = jwt.sign({ id: user.email }, JWT_SECRET, { expiresIn: '1h' });
 
                 return res.status(200).send({
                     msg: 'Logged In Successfully',

@@ -93,12 +93,12 @@ const Manager = {
 
     //9 GET ALL THE DONATION DONE BY A DONOR
     getAllDonationDoneByADonor: async (email) => {
-        const query = `SELECT transaction_Id  , email , project_Id , payment_type , date , time
+        const query = `SELECT transaction_Id  , amount, email , project_Id , payment_type , date , time
         FROM donation
         WHERE email = $1
         ORDER BY date DESC, time DESC`;
         const result = await pool.query(query, [email]);
-        return result.rows[0];
+        return result.rows;
     },
 
     //10 ADD OR CREATE A NEW PROJECT 

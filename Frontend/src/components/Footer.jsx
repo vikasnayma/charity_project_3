@@ -22,9 +22,9 @@ const Footer = () => {
               Charity
             </h5>
             <ul>
-              <li className='mt-2'>📍 Yuna Street, 12 London</li>
+              <li className='mt-2'>📍 Charity Street, 12 London</li>
               <li className='mt-2'>📞 +123 986 8764</li>
-              <li className='mt-2'>✉ yuna@domain.com</li>
+              <li className='mt-2'>✉ charity@domain.com</li>
             </ul>
           </div>
          

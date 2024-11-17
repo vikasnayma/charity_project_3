@@ -12,17 +12,30 @@ import charityLogo from '../assets1/charity-logo.jpg'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 
+
+
 const Navbar = () => {
 
   const [isActive, setIsActive] = useState(false);
   const [authen, setAuthen] = useState(false);
-  const Navigation = useNavigate();
-  const token = Cookies.get("token");
+  const navigate = useNavigate();
+  // const token = Cookies.get("token");
 
 
-  const handleLogout = () => {
-    Cookies.remove("token");
-    navigate('/Login');
+  // const handleLogout = () => {
+  //   Cookies.remove("token");
+  //   navigate('/Login');
+  // };
+
+   // Retrieve the token from localStorage
+   const token = localStorage.getItem("token");
+
+   const handleLogout = () => {
+      // Remove the token from localStorage
+      localStorage.removeItem("token");
+
+      // Redirect to the login page
+     navigate('/Login');
   };
 
 
@@ -33,7 +46,7 @@ const Navbar = () => {
                 <IoIosCall className='mt-1'/>
                 <span>+123 986 8764</span>
                 <CiMail className='mt-1 ml-3'/>
-                <pre> yuna@domain.com</pre>
+                <pre> charity@domain.com</pre>
             </div>
             <div className='hidden md:flex gap-4'> 
                 <a><CiFacebook /></a>

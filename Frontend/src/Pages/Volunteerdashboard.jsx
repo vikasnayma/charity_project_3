@@ -5,24 +5,45 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
+import {jwtDecode} from 'jwt-decode'
 
 function Volunteerdashboard() {
-  const [volunteer, setVolunteer] = useState({});
+  const [volunteer, setVolunteer] = useState({
+    name: '',
+    city: '',
+    phone: '',
+    email: ''
+  });
   const [projects, setProjects] = useState([]);
-  const [currentProjects, setCurrentProjects] = useState([]);
-  const [completedProjects, setCompletedProjects] = useState([]);
-
-  const volunteerId = "your_volunteer_id"; // Replace this with actual volunteer ID
-
+  const [currentProjects, setCurrentProjects] = useState([
+    {
+       Project_name: '',
+       Date_of_assign: ''
+    }
+  ]);
+  const [completedProjects, setCompletedProjects] = useState([
+    {
+      Project_name: '',
+      Date_of_assign: '',
+      Date_of_completion: ''
+    }
+  ]);
+   
+   const token = localStorage.getItem("token");  // Assume token is stored in localStorage
+   const decoded = jwtDecode(token);
+   const id = decoded.id; // here id === email id
+   console.log("User ID:", decoded.id); 
+ 
   useEffect(() => {
     const fetchVolunteerData = async () => {
       try {
         // Fetch volunteer details
-        const volunteerRes = await axios.get(`http://localhost:9000/volunteer/${volunteerId}`);
+        const volunteerRes = await axios.get(`http://localhost:9000/api/volunteer/${id}`);
+        console.log(volunteerRes.data)
         setVolunteer(volunteerRes.data);
 
         // Fetch volunteer projects
-        const projectRes = await axios.get(`http://localhost:9000/projectbyvolunteer/${volunteerId}`);
+        const projectRes = await axios.get(`http://localhost:9000/api/projectbyvolunteer/${id}`);
         setProjects(projectRes.data);
 
         // Filter current and completed projects
@@ -37,7 +58,7 @@ function Volunteerdashboard() {
     };
 
     fetchVolunteerData();
-  }, [volunteerId]);
+  }, []);
 
   // Group projects by Project_ID to get unique project names
   const groupedProjects = projects.reduce((acc, project) => {
@@ -122,25 +143,7 @@ function Volunteerdashboard() {
         )}
       </motion.div>
 
-      <h2 className="text-center font-serif text-lg font-bold bg-[#902121] text-white p-2">Summary</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {groupedProjects.length > 0 ? (
-          groupedProjects.map((project, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
-              <h3 className="text-xl font-semibold text-blue-950 mb-2">{project.Project_name}</h3>
-              <p className="text-gray-500"> Count: {project.count}</p>
-              <p className="text-gray-500">Dates Assigned and Completed: {project.dates.map((date, idx) => (
-                <span key={idx}>
-                  {date.Date_of_assign} - {date.Date_of_completion}
-                  {idx < project.dates.length - 1 && ", "}
-                </span>
-              ))}</p>
-            </div>
-          ))
-        ) : (
-          <p className="text-gray-500">No donation summary found.</p>
-        )}
-      </div>
+      
 
       <Footer />
     </div>
